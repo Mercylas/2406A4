@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var TestResponseSchema = new Schema({
 	userId: String,
 	answers: [{
-    type: String
+		type:String
 	}]
 });
 

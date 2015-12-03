@@ -5,7 +5,11 @@ var TestQuestionSchema = new Schema({
 	question: String,
 	correctAnswer: String,
 	answers: [{
-    type: String
+    	A: String,
+    	B: String,
+    	C: String,
+    	D: String,
+    	E: String
 	}]
 });
 

@@ -5,6 +5,8 @@ module.exports = function() {
 	var db = mongoose.connect(config.db);
 
 	require('../app/models/user.server.model');
+	require('../app/models/testquestion.server.model');
+	require('../app/models/testresponse.server.model');
 
 	return db;
 };

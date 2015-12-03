@@ -1,6 +1,6 @@
-var User = require('mongoose').model('User');
+var Question = require('mongoose').model('TestQuestion');
 exports.render = function(req, res) {
-	User.find({}, function(err, users) {
+	Question.find({}, function(err, question) {
 		if (err) {
 			return next(err);
 		}
@@ -8,21 +8,21 @@ exports.render = function(req, res) {
 			res.render('quiz', {
    			title: 'Midterm Quiz',
    			user: req.user ? req.user.name : '',
-   			questions: users
+   			questions: question
     	});
 		}
 	});
 };
 exports.questionByID = function(req, res, next, id) {
-	User.findOne({
+	Question.findOne({
 			_id: id
 		}, 
-		function(err, user) {
+		function(err, question) {
 			if (err) {
 				return next(err);
 			}
 			else {
-				req.user = user;
+				req.question = question;
 				next();
 			}
 		}

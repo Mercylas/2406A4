@@ -9,10 +9,12 @@
 
     <% if ( user ) { %>
 		<h2>Good Luck On the Test <%=user%> </h2>
+		<%var i = 1%>
 		<% questions.forEach( function( display ){ %>
-		<a href="/quiz/<%=display.id%>"><%= display.name%></a>
-		<% }); %>
+		<a href="/quiz/<%=display.id%>">Question <%= i%></a>
 		<br>
+		<%i++%>
+		<% }); %>
 		<a href="/">Submit</a>
 		<a href="/logout">Logout</a>
 	<% } else { %>

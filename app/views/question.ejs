@@ -8,8 +8,16 @@
     <h1><%= title %></h1>
 
     <% if ( user ) { %>
-		<h2>This is a question <%=user%> </h2>
-		<a href="/quiz">Submit</a>
+		<h2><%=questions.question%> </h2>
+		<form action="/quiz" method="post">
+		<input type="radio" name="answer" value="A"><%= questions.answers[0].A%><br>
+		<input type="radio" name="answer" value="B"><%= questions.answers[0].B%><br>
+		<input type="radio" name="answer" value="C"><%= questions.answers[0].C%><br>
+		<input type="radio" name="answer" value="D"><%= questions.answers[0].D%><br>
+		<input type="radio" name="answer" value="E"><%= questions.answers[0].E%><br>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      	</form>
+		<br>
 		<a href="/logout">Logout</a>
 	<% } else { %>
 		<p> Unautorized Access </p>

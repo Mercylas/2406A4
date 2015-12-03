@@ -1,15 +1,11 @@
-var User = require('mongoose').model('User');
+var Question = require('mongoose').model('TestQuestion');
 exports.render = function(req, res) {
-	User.find({}, function(err, users) {
-		if (err) {
-			return next(err);
-		}
-		else {
 			res.render('question', {
    			title: 'Question',
    			user: req.user ? req.user.name : '',
-   			questions: users
-    	});
-		}
+   			questions: req.question
 	});
+};
+exports.update = function(req, res, next) {
+		return res.redirect('/quiz');
 };
