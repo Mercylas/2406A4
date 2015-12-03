@@ -10,12 +10,61 @@
     <% if ( user ) { %>
 		<h2><%=questions.question%> </h2>
 		<form action="/quiz" method="post">
-		<input type="radio" name="answer" value="A"><%= questions.answers[0].A%><br>
-		<input type="radio" name="answer" value="B"><%= questions.answers[0].B%><br>
-		<input type="radio" name="answer" value="C"><%= questions.answers[0].C%><br>
-		<input type="radio" name="answer" value="D"><%= questions.answers[0].D%><br>
-		<input type="radio" name="answer" value="E"><%= questions.answers[0].E%><br>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+		<%	switch(checked){
+			case "A":
+			%>
+			<input type="radio" name="answer" value="A" checked><%= questions.answers[0].A%><br>
+			<input type="radio" name="answer" value="B"><%= questions.answers[0].B%><br>
+			<input type="radio" name="answer" value="C"><%= questions.answers[0].C%><br>
+			<input type="radio" name="answer" value="D"><%= questions.answers[0].D%><br>
+			<input type="radio" name="answer" value="E"><%= questions.answers[0].E%><br>        	
+			<%break;
+    		case "B":
+        	%>
+			<input type="radio" name="answer" value="A"><%= questions.answers[0].A%><br>
+			<input type="radio" name="answer" value="B" checked><%= questions.answers[0].B%><br>
+			<input type="radio" name="answer" value="C"><%= questions.answers[0].C%><br>
+			<input type="radio" name="answer" value="D"><%= questions.answers[0].D%><br>
+			<input type="radio" name="answer" value="E"><%= questions.answers[0].E%><br>        	
+			<%break;
+        	case "C":
+        	%>
+			<input type="radio" name="answer" value="A"><%= questions.answers[0].A%><br>
+			<input type="radio" name="answer" value="B"><%= questions.answers[0].B%><br>
+			<input type="radio" name="answer" value="C"checked><%= questions.answers[0].C%><br>
+			<input type="radio" name="answer" value="D"><%= questions.answers[0].D%><br>
+			<input type="radio" name="answer" value="E"><%= questions.answers[0].E%><br>        	
+			<%break;
+        	case "D":
+        	%>
+			<input type="radio" name="answer" value="A"><%= questions.answers[0].A%><br>
+			<input type="radio" name="answer" value="B"><%= questions.answers[0].B%><br>
+			<input type="radio" name="answer" value="C"><%= questions.answers[0].C%><br>
+			<input type="radio" name="answer" value="D" checked><%= questions.answers[0].D%><br>
+			<input type="radio" name="answer" value="E"><%= questions.answers[0].E%><br>        	
+			<%break;
+        	break;
+        	case "E":
+        	%>
+			<input type="radio" name="answer" value="A"><%= questions.answers[0].A%><br>
+			<input type="radio" name="answer" value="B"><%= questions.answers[0].B%><br>
+			<input type="radio" name="answer" value="C"><%= questions.answers[0].C%><br>
+			<input type="radio" name="answer" value="D"><%= questions.answers[0].D%><br>
+			<input type="radio" name="answer" value="E" checked><%= questions.answers[0].E%><br>        	
+			<%break;
+        	break;
+        	default:
+        	%>
+			<input type="radio" name="answer" value="A"><%= questions.answers[0].A%><br>
+			<input type="radio" name="answer" value="B"><%= questions.answers[0].B%><br>
+			<input type="radio" name="answer" value="C"><%= questions.answers[0].C%><br>
+			<input type="radio" name="answer" value="D"><%= questions.answers[0].D%><br>
+			<input type="radio" name="answer" value="E"><%= questions.answers[0].E%><br>        	
+			<%break;
+        	break;
+		}
+		%>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
       	</form>
 		<br>
 		<a href="/logout">Logout</a>

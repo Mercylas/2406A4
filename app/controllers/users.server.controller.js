@@ -1,6 +1,6 @@
 var User = require('mongoose').model('User'),
 	passport = require('passport');
-
+var Response = require('mongoose').model('TestResponse');
 var getErrorMessage = function(err) {
 	var message = '';
 	if (err.code) {
@@ -50,6 +50,8 @@ exports.renderRegister = function(req, res, next) {
 exports.register = function(req, res, next) {
 	if (!req.user) {
 		var user = new User(req.body);
+		var response = new Response();
+		response.userId = user.username;
 		var message = null;
 		user.provider = 'local';
 		user.save(function(err) {
@@ -57,8 +59,14 @@ exports.register = function(req, res, next) {
 				var message = getErrorMessage(err);
 				req.flash('error', message);
 				return res.redirect('/register');
-			}	
-
+			}
+			response.save(function(err) {
+			if (err) {
+				var message = getErrorMessage(err);
+				req.flash('error', message);
+				return res.redirect('/register');
+			}
+			});
 			req.login(user, function(err) {
 				if (err) 
 					return next(err);
@@ -92,14 +100,12 @@ exports.saveOAuthUserProfile = function(req, profile, done) {
 					User.findUniqueUsername(possibleUsername, null, function(availableUsername) {
 						profile.username = availableUsername;
 						user = new User(profile);
-
 						user.save(function(err) {
 							if (err) {
 								var message = _this.getErrorMessage(err);
 								req.flash('error', message);
 								return res.redirect('/register');
 							}
-
 							return done(err, user);
 						});
 					});
